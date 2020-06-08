@@ -2,6 +2,9 @@ import React, {useEffect, useState} from 'react';
 import Button from "react-bootstrap/Button";
 import {ContactEdit} from "./ContactsEdit";
 import {updateContact, listContacts, deleteContact} from "../../api/api";
+import LinkWithConfirmation from "../../shared/components/LinkWithConfirmation";
+import moment from "moment";
+import {DateFormatType} from "../../shared/utils/moment.settings";
 
 function ContactsList() {
     const [isEditOpened, setShow] = useState(false);
@@ -13,7 +16,12 @@ function ContactsList() {
         async function getData() {
             setLoading(true);
             try {
-                setCustomers(await listContacts());
+                const contacts = await listContacts();
+                // TODO: discuss where to move it
+                setCustomers(contacts.map(item => {
+                    item.createdDate = moment(item.createdDate).format(DateFormatType.M3_D2_CM_Y4);
+                    return item;
+                }));
                 setLoading(false);
             } catch (e) {
                 setLoading(false);
@@ -31,7 +39,9 @@ function ContactsList() {
         setShow(true)
     };
 
-    const showEditModal = (user) => () => {
+    const showEditModal = (user) => (e) => {
+        // TODO: discuss is ti possible to reduce it
+        e.preventDefault();
         setSelectedContact(user);
         setShow(true);
     };
@@ -39,6 +49,8 @@ function ContactsList() {
     const addContact = async (contact) => {
         const isNewContact = contact.id === undefined;
         return updateContact(contact).then(newContact => {
+            // TODO: discuss where to move it
+            newContact.createdDate = moment(newContact.createdDate).format(DateFormatType.M3_D2_CM_Y4);
             // Different techniques for updating a Contact List depends Creating or Editing flow
             if (isNewContact) {
                 setCustomers([
@@ -55,7 +67,6 @@ function ContactsList() {
     };
 
     const deleteItem = contact => (e) => {
-        e.preventDefault();
         deleteContact(contact).then(_ => {
             setCustomers(
                 customers.filter(item => item.id !== contact.id)
@@ -110,9 +121,8 @@ function ContactsList() {
                                         <td>{user.createdDate}</td>
                                         <td style={{width: '120px'}}>
                                             <span className="editButtons">
-                                                <a href="/contacts/edit" onClick={showEditModal(user)}>Edit</a>
-                                                <a href="#" className="text-danger"
-                                                   onClick={deleteItem(user)}>Delete</a>
+                                                <a href="#" onClick={showEditModal(user)}>Edit</a>
+                                                <LinkWithConfirmation actionFn={deleteItem(user)}/>
                                             </span>
                                         </td>
                                     </tr>))
