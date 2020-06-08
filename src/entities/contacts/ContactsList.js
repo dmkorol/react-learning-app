@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import Button from "react-bootstrap/Button";
 import {ContactEdit} from "./ContactsEdit";
-import {updateContact, listContacts, deleteContact} from "../api/api";
+import {updateContact, listContacts, deleteContact} from "../../api/api";
 
 function ContactsList() {
     const [isEditOpened, setShow] = useState(false);
@@ -21,6 +21,7 @@ function ContactsList() {
         }
 
         getData();
+
     }, []);
 
     const handleHide = () => setShow(false);
@@ -68,9 +69,11 @@ function ContactsList() {
             <div className="d-flex align-items-center">
                 <h1 className="h3 mb-0 text-gray-800 ">Contacts</h1>
                 <div className="ml-auto p-2">
-                    <Button onClick={showAddNewModal}>+ Add</Button>
+                    <Button onClick={showAddNewModal}>
+                        <i className="fas fa-plus-circle fa-sm"/> New contact</Button>
                 </div>
             </div>
+            <p>Real data from API.</p>
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
 
@@ -80,11 +83,11 @@ function ContactsList() {
                         <table className="table table-bordered table-striped table-hover" width="100%" cellSpacing={0}>
                             <thead>
                             <tr>
-                                <th>Name</th>
-                                <th>Email</th>
-                                <th>Phone</th>
-                                <th>Added Date</th>
-                                <th></th>
+                                <th className="text-primary">Name</th>
+                                <th className="text-primary">Email</th>
+                                <th className="text-primary">Phone</th>
+                                <th className="text-primary">Added Date</th>
+                                <th className="text-primary"></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -107,7 +110,7 @@ function ContactsList() {
                                         <td>{user.createdDate}</td>
                                         <td style={{width: '120px'}}>
                                             <span className="editButtons">
-                                                <a href="#" onClick={showEditModal(user)}>Edit</a>
+                                                <a href="/contacts/edit" onClick={showEditModal(user)}>Edit</a>
                                                 <a href="#" className="text-danger"
                                                    onClick={deleteItem(user)}>Delete</a>
                                             </span>

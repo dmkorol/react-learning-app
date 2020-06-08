@@ -43,3 +43,13 @@ export const updateContact = (contact) => {
         .then(handleErrors)
         .then(res => res.json());
 };
+
+export const apiLogin = (username, password) => {
+    return new Promise((resolve, reject) => {
+        if (username === 'admin' && password === 'admin') {
+            resolve()
+        } else {
+            reject()
+        }
+    })
+};
