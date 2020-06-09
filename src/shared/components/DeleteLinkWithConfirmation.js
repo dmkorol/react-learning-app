@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import ConfirmWindow from "./ConfirmWindow";
 
-function LinkWithConfirmation({title, actionFn}) {
+function DeleteLinkWithConfirmation({title, actionFn}) {
     title = 'Delete';
     const [isModalShown, showModal] = useState(false);
 
@@ -18,9 +18,13 @@ function LinkWithConfirmation({title, actionFn}) {
     return (<>
             <a href="#" className="text-danger"
                onClick={showConfirm}>{title}</a>
-            {isModalShown && <ConfirmWindow onHide={() => showModal(false)} onDelete={runConfirmedAction}/>}
+            {isModalShown && <ConfirmWindow
+                color="danger"
+                buttonPrimaryTitle="Delete"
+                onHide={() => showModal(false)}
+                onConfirm={runConfirmedAction}/>}
         </>
     );
 }
 
-export default LinkWithConfirmation;
+export default DeleteLinkWithConfirmation;

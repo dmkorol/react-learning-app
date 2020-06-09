@@ -2,9 +2,12 @@ import React from 'react';
 import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 
-function ConfirmWindow({title, message, onHide, onDelete}) {
+function ConfirmWindow({title, message, onHide, onConfirm, buttonSecondaryTitle, buttonPrimaryTitle, color}) {
     title = title || 'Delete';
     message = message || 'Are you sure you want to delete this item?';
+    buttonSecondaryTitle = buttonSecondaryTitle || 'Cancel';
+    buttonPrimaryTitle = buttonPrimaryTitle || 'Confirm';
+    color = color || 'primary';
 
     return (
         <Modal show={true} onHide={onHide}>
@@ -16,10 +19,10 @@ function ConfirmWindow({title, message, onHide, onDelete}) {
             </Modal.Body>
             <Modal.Footer>
                 <Button variant="secondary" onClick={onHide}>
-                    Cancel
+                    {buttonSecondaryTitle}
                 </Button>
-                <Button variant="danger" onClick={onDelete}>
-                    Delete
+                <Button variant={color} onClick={onConfirm}>
+                    {buttonPrimaryTitle}
                 </Button>
             </Modal.Footer>
         </Modal>

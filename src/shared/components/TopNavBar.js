@@ -1,8 +1,32 @@
 import React, {useState} from 'react';
 import {useAuthUser} from "../utils/AuthUser";
+import {Dropdown} from "react-bootstrap";
+import ConfirmWindow from "./ConfirmWindow";
+
+// The forwardRef is important!!
+// Dropdown needs access to the DOM node in order to position the Menu
+const CustomToggle = React.forwardRef(({children, onClick}, ref) => (
+    <a
+        href="#" role="button"
+        className="nav-link"
+        ref={ref}
+        onClick={(e) => {
+            e.preventDefault();
+            onClick(e);
+        }}
+    >
+        {children}
+    </a>
+));
 
 function TopNavBar(props) {
     const {setLogged} = useAuthUser();
+    const [isLogoutModalShown, showLogoutModal] = useState(false);
+
+    const logout = () => {
+        showLogoutModal(false);
+        setLogged(false);
+    };
     return (<>
             <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                 {/* Sidebar Toggle (Topbar) */}
@@ -10,51 +34,35 @@ function TopNavBar(props) {
                     <i className="fa fa-bars"/>
                 </button>
 
-                {/* Topbar Navbar */}
                 <ul className="navbar-nav ml-auto">
                     <div className="topbar-divider d-none d-sm-block"/>
-                    {/* Nav Item - User Information */}
-                    <li className="nav-item dropdown no-arrow">
-                        <a className="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span className="mr-2 d-none d-lg-inline text-gray-600 small">John Dou</span>
-                            <img className="img-profile rounded-circle"
-                                 src="https://source.unsplash.com/MYbhN8KaaEc/60x60"/>
-                        </a>
-                        {/* Dropdown - User Information */}
-                        <div className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                             aria-labelledby="userDropdown">
-                            <a className="dropdown-item" href="#" data-toggle="modal"
-                               data-target="#logoutModal">
-                                <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"/>
-                                Logout
-                            </a>
-                        </div>
+                    <li className="nav-item dropdown no-arrow" style={{position: 'relative'}}>
+                        <Dropdown>
+                            <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
+                                <span className="mr-2 d-none d-lg-inline text-gray-600 small">John Dou</span>
+                                <img className="img-profile rounded-circle"
+                                     src="https://source.unsplash.com/MYbhN8KaaEc/60x60"/>
+                            </Dropdown.Toggle>
+
+                            <Dropdown.Menu>
+                                {/*<Dropdown.Item eventKey="1">Action</Dropdown.Item>*/}
+                                {/*<Dropdown.Divider/>*/}
+                                <Dropdown.Item eventKey="1" onClick={() => showLogoutModal(true)}>
+                                    <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"/>
+                                    Logout</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
                     </li>
                 </ul>
             </nav>
-            <div className="modal fade" id="logoutModal" tabIndex={-1} role="dialog" aria-labelledby="exampleModalLabel"
-                 aria-hidden="true">
-                <div className="modal-dialog" role="document">
-                    <div className="modal-content">
-                        <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                            <button className="close" type="button" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">×</span>
-                            </button>
-                        </div>
-                        <div className="modal-body">Select "Logout" below if you are ready to end your current
-                            session.
-                        </div>
-                        <div className="modal-footer">
-                            <button className="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a className="btn btn-primary" href="#" data-dismiss="modal" onClick={() => {
-                                setLogged(false)
-                            }}>Logout</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+
+            {isLogoutModalShown && <ConfirmWindow
+                title="Ready to Leave?"
+                message='Select "Logout" below if you are ready to end your current session.'
+                color="primary"
+                buttonPrimaryTitle="Logout"
+                onHide={() => showLogoutModal(false)}
+                onConfirm={logout}/>}
         </>
     );
 }

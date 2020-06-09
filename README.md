@@ -1,4 +1,6 @@
 ## Local Development
+0. Install deps: `yarn install`
+
 1. Run UI `yarn start`
 
 2. Run fake API `yarn server`
@@ -8,6 +10,7 @@
 ##
 ##
 ##
+git remote add origin git@github.com:dmkorol/react-learning-app.git
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

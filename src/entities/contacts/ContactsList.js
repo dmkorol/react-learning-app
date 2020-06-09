@@ -2,7 +2,7 @@ import React, {useEffect, useState} from 'react';
 import Button from "react-bootstrap/Button";
 import {ContactEdit} from "./ContactsEdit";
 import {updateContact, listContacts, deleteContact} from "../../api/api";
-import LinkWithConfirmation from "../../shared/components/LinkWithConfirmation";
+import DeleteLinkWithConfirmation from "../../shared/components/DeleteLinkWithConfirmation";
 import moment from "moment";
 import {DateFormatType} from "../../shared/utils/moment.settings";
 
@@ -122,7 +122,7 @@ function ContactsList() {
                                         <td style={{width: '120px'}}>
                                             <span className="editButtons">
                                                 <a href="#" onClick={showEditModal(user)}>Edit</a>
-                                                <LinkWithConfirmation actionFn={deleteItem(user)}/>
+                                                <DeleteLinkWithConfirmation actionFn={deleteItem(user)}/>
                                             </span>
                                         </td>
                                     </tr>))

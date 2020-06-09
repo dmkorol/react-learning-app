@@ -1,14 +1,6 @@
 {
   "clients": [
     {
-      "id": 8,
-      "firstName": "Timotheus",
-      "lastName": "Di Francecshi",
-      "email": "tdifrancecshi7@arizona.edu",
-      "phone": "721-292-9198",
-      "createdDate": "2019-09-16T21:27:50Z"
-    },
-    {
       "id": 9,
       "firstName": "Kylen",
       "lastName": "Bendin",
