@@ -4,7 +4,8 @@ import Sidebar from "../shared/components/Sidebar";
 import TopNavBar from "../shared/components/TopNavBar";
 import Footer from "../shared/components/Footer";
 import Dashboard from "../entities/dashboard/Dashboard";
-import {Route, Switch} from "react-router-dom";
+import {Redirect, Route, Switch} from "react-router-dom";
+import '@fortawesome/fontawesome-free/css/all.min.css';
 
 function AuthorizedLayout() {
     return (
@@ -17,6 +18,7 @@ function AuthorizedLayout() {
                         <Switch>
                             <Route path="/contacts" component={ContactsList} />
                             <Route path="/dashboard" component={Dashboard} />
+                            <Redirect to="/dashboard"/>
                         </Switch>
                     </div>
                 </div>

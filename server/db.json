@@ -154,15 +154,6 @@
       "createdDate": "2020-06-08T22:06:31.761Z",
       "photo": null,
       "id": 31
-    },
-    {
-      "firstName": "John",
-      "lastName": "Doe",
-      "email": "doe@google.com",
-      "phone": "233-222-2222",
-      "photo": null,
-      "createdDate": "2020-06-08T22:07:09.697Z",
-      "id": 32
     }
   ]
 }

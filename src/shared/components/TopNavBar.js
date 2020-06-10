@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useAuthUser} from "../utils/AuthUser";
-import {Dropdown} from "react-bootstrap";
+import Dropdown from "react-bootstrap/Dropdown";
 import ConfirmWindow from "./ConfirmWindow";
 
 // The forwardRef is important!!
