@@ -1,7 +1,11 @@
 ## Demo
-Deployed production UI with CRUD API.
 
 [Online demo ](http://ec2-18-217-233-144.us-east-2.compute.amazonaws.com/) is available.
+
+```
+user: admin 
+pass: admin
+```
 
 ## Local Development
 0. Install deps: `yarn install`
