@@ -1,3 +1,5 @@
+const API_URL = '/api';
+
 const handleErrors = res => {
     if (!res.ok) {
         return res.json().then(error => {
@@ -8,12 +10,12 @@ const handleErrors = res => {
 };
 
 export const listContacts = () => {
-    return fetch('http://localhost:3001/clients')
+    return fetch(API_URL + '/clients')
         .then(res => res.json());
 };
 
 export const deleteContact = (contact) => {
-    return fetch(`http://localhost:3001/clients/${contact.id}`,
+    return fetch(`${API_URL}/clients/${contact.id}`,
         {
             method: 'DELETE'
         })
@@ -22,7 +24,7 @@ export const deleteContact = (contact) => {
 
 export const updateContact = (contact) => {
     contact.createdDate = (new Date()).toISOString();
-    let url = 'http://localhost:3001/clients';
+    let url = API_URL + '/clients';
 
     // Distinguish Create a New from Edit
     let method = 'POST';
