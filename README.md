@@ -1,3 +1,8 @@
+## Demo
+Deployed production UI with CRUD API.
+
+[Online demo ](http://ec2-18-217-233-144.us-east-2.compute.amazonaws.com/) is available.
+
 ## Local Development
 0. Install deps: `yarn install`
 
@@ -7,9 +12,7 @@
 
 3. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
-##
-##
-##
+---
 git remote add origin git@github.com:dmkorol/react-learning-app.git
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
