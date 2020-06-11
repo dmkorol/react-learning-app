@@ -39,7 +39,7 @@ function TopNavBar(props) {
                     <li className="nav-item dropdown no-arrow" style={{position: 'relative'}}>
                         <Dropdown>
                             <Dropdown.Toggle as={CustomToggle} id="dropdown-custom-components">
-                                <span className="mr-2 d-none d-lg-inline text-gray-600 small">John Dou</span>
+                                <span className="mr-2 d-none d-lg-inline text-gray-600 small">Admin</span>
                                 <img className="img-profile rounded-circle"
                                      src="https://source.unsplash.com/MYbhN8KaaEc/60x60"/>
                             </Dropdown.Toggle>
