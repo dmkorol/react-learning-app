@@ -11,6 +11,10 @@ function Sidebar({match}) {
             name: 'Contacts',
             icon: 'fa-address-book',
             url: '/contacts'
+        }, {
+            name: 'Contacts Extended',
+            icon: 'fa-address-card',
+            url: '/contacts-extened'
         }
     ];
     return (<>

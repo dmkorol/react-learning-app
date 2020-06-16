@@ -1,6 +1,6 @@
-const API_URL = '/api';
+export const API_URL = '/api';
 
-const handleErrors = res => {
+export const handleErrors = res => {
     if (!res.ok) {
         return res.json().then(error => {
             throw error

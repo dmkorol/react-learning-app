@@ -1,5 +1,6 @@
 import React from 'react';
 import ContactsList from "../entities/contacts/ContactsList";
+import ContactsExtendedList from "../entities/contacts-extended/ContactsExtendedList";
 import Sidebar from "../shared/components/Sidebar";
 import TopNavBar from "../shared/components/TopNavBar";
 import Footer from "../shared/components/Footer";
@@ -17,6 +18,7 @@ function AuthorizedLayout() {
                     <div className="container-fluid">
                         <Switch>
                             <Route path="/contacts" component={ContactsList} />
+                            <Route path="/contacts-extened" component={ContactsExtendedList} />
                             <Route path="/dashboard" component={Dashboard} />
                             <Redirect to="/dashboard"/>
                         </Switch>
