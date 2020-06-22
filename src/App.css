@@ -38,6 +38,9 @@
     margin-left: 1rem;
 }
 
+.editButtonsParent:hover .editButtons,
 .table-hover tbody tr:hover .editButtons {
     visibility: visible;
 }
+
+

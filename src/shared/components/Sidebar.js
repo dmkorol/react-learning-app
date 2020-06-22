@@ -14,7 +14,7 @@ function Sidebar({match}) {
         }, {
             name: 'Contacts Extended',
             icon: 'fa-address-card',
-            url: '/contacts-extened'
+            url: '/contacts-extended'
         }
     ];
     return (<>

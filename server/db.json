@@ -168,131 +168,19 @@
   "clients-extended": [
     {
       "id": 0,
-      "firstName": "Kylen",
+      "firstName": "Kate",
       "lastName": "Bendin",
       "email": "kbendin8@facebook.com",
       "phone": "416-257-0503",
-      "createdDate": "2019-10-11T22:31:35Z"
+      "createdDate": "2019-10-11T22:31:35.000Z"
     },
     {
-      "firstName": "Test",
-      "lastName": "Test",
-      "email": "test@gmail.com",
-      "phone": "111111111",
-      "createdDate": "2020-06-16T20:38:16.031Z",
+      "firstName": "John",
+      "lastName": "Doe",
+      "email": "doe@gmail.com",
+      "phone": "111-111-1111",
+      "createdDate": "2020-06-17T16:38:43.530Z",
       "id": 1
-    },
-    {
-      "firstName": "Test",
-      "lastName": "Test",
-      "email": "test@gmail.com",
-      "phone": "111111111",
-      "createdDate": "2020-06-16T20:38:20.384Z",
-      "id": 2
-    },
-    {
-      "firstName": "1",
-      "lastName": "2",
-      "email": "3",
-      "phone": "333",
-      "createdDate": "2020-06-16T20:40:02.580Z",
-      "id": 3
-    },
-    {
-      "firstName": "1",
-      "lastName": "2",
-      "email": "3",
-      "phone": "333",
-      "createdDate": "2020-06-16T20:40:05.903Z",
-      "id": 4
-    },
-    {
-      "firstName": "3",
-      "lastName": "3",
-      "email": "3",
-      "phone": "3",
-      "createdDate": "2020-06-16T20:43:37.413Z",
-      "id": 5
-    },
-    {
-      "firstName": "4",
-      "lastName": "4",
-      "email": "4",
-      "phone": "4",
-      "createdDate": "2020-06-16T20:44:45.667Z",
-      "id": 6
-    },
-    {
-      "firstName": "5",
-      "lastName": "5",
-      "email": "5",
-      "phone": "5",
-      "createdDate": "2020-06-16T20:45:49.288Z",
-      "id": 7
-    },
-    {
-      "firstName": "6",
-      "lastName": "6",
-      "email": "6",
-      "phone": "6",
-      "createdDate": "2020-06-16T20:46:16.872Z",
-      "id": 8
-    },
-    {
-      "firstName": "111",
-      "lastName": "111",
-      "email": "111",
-      "phone": "1111",
-      "createdDate": "2020-06-16T20:53:00.768Z",
-      "id": 9
-    },
-    {
-      "firstName": "111",
-      "lastName": "111",
-      "email": "111",
-      "phone": "1111",
-      "createdDate": "2020-06-16T20:53:02.302Z",
-      "id": 10
-    },
-    {
-      "firstName": "111",
-      "lastName": "111",
-      "email": "111",
-      "phone": "1111",
-      "createdDate": "2020-06-16T20:53:09.131Z",
-      "id": 11
-    },
-    {
-      "firstName": "4",
-      "lastName": "44444",
-      "email": "444",
-      "phone": "4444",
-      "createdDate": "2020-06-16T20:53:29.373Z",
-      "id": 12
-    },
-    {
-      "firstName": "09999",
-      "lastName": "9999",
-      "email": "999",
-      "phone": "999",
-      "createdDate": "2020-06-16T20:54:13.790Z",
-      "id": 13
-    },
-    {
-      "firstName": "9090",
-      "lastName": "90909",
-      "email": "90909",
-      "phone": "90909",
-      "createdDate": "2020-06-16T20:55:04.985Z",
-      "id": 14
-    },
-    {
-      "firstName": "0909",
-      "lastName": "9090",
-      "email": "909909",
-      "phone": "09090",
-      "createdDate": "2020-06-16T20:56:06.702Z",
-      "id": 15
     }
   ],
   "notes": [
@@ -300,7 +188,7 @@
       "id": 0,
       "clientExtendedId": 0,
       "text": "",
-      "createdDate": "2019-10-11T22:31:35Z"
+      "createdDate": "2020-06-11T22:31:35Z"
     }
   ],
   "emails": [

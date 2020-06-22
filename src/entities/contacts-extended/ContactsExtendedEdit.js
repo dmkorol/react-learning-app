@@ -2,11 +2,11 @@ import Modal from "react-bootstrap/Modal";
 import Button from "react-bootstrap/Button";
 import React, {useState} from "react";
 
-export function ContactExtendedNew({onHide, onSave, selectedContact}) {
-    const [firstName, setFirstName] = useState('');
-    const [lastName, setLastName] = useState('');
-    const [email, setEmail] = useState('');
-    const [phone, setPhone] = useState('');
+export function ContactExtendedEdit({onHide, onSave, selectedContact = {}}) {
+    const [firstName, setFirstName] = useState(selectedContact.firstName || '');
+    const [lastName, setLastName] = useState(selectedContact.lastName || '');
+    const [email, setEmail] = useState(selectedContact.email || '');
+    const [phone, setPhone] = useState(selectedContact.phone || '');
 
     const [errors, setErrors] = useState(null);
     const [isSaving, setIsSaving] = useState(false);
@@ -32,7 +32,7 @@ export function ContactExtendedNew({onHide, onSave, selectedContact}) {
 
     return <Modal show={true} onHide={onHide}>
         <Modal.Header closeButton>
-            <Modal.Title>New Contact</Modal.Title>
+            <Modal.Title>{selectedContact.id ? 'Edit' : 'New'} Contact</Modal.Title>
         </Modal.Header>
         <Modal.Body>
             <form onSubmit={save}>

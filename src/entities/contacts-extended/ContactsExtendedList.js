@@ -1,20 +1,19 @@
 import React, {useEffect, useState} from 'react';
 import Button from "react-bootstrap/Button";
-
-
 import DeleteLinkWithConfirmation from "../../shared/components/DeleteLinkWithConfirmation";
 import {DateFormatType} from "../../shared/utils/moment.settings";
-import {createContact, listExpendedContacts} from "./contactsExtended.api";
-import {ContactExtendedNew} from "./ContactsExtendedNew";
+import {ContactExtendedEdit} from "./ContactsExtendedEdit";
+import {Link} from "react-router-dom";
+import {ContactsExtended} from "../../api/ContactsExtended/contacts.api";
 
-function ContactsExtendedList() {
+function ContactsExtendedList({match, location}) {
     const [isNewOpened, setShowNewModal] = useState(false);
     const [isLoading, setLoading] = useState(false);
     const [customers, setCustomers] = useState([]);
 
     useEffect(() => {
         setLoading(true);
-        listExpendedContacts()
+        ContactsExtended.listExpendedContacts()
             .then(contacts => setCustomers(contacts))
             .finally(() => setLoading(false));
 
@@ -22,12 +21,10 @@ function ContactsExtendedList() {
 
     const handleHide = () => setShowNewModal(false);
 
-    const showAddNewModal = () => {
-        setShowNewModal(true)
-    };
+    const showAddNewModal = () => setShowNewModal(true)
 
     const addContact = async (contact) => {
-        return createContact(contact).then(newContact => {
+        return ContactsExtended.createContact(contact).then(newContact => {
             setCustomers([
                 ...customers,
                 newContact,
@@ -37,11 +34,20 @@ function ContactsExtendedList() {
     };
 
     const deleteItem = contact => (e) => {
-        // deleteContact(contact).then(_ => {
-        //     setCustomers(
-        //         customers.filter(item => item.id !== contact.id)
-        //     );
-        // })
+        ContactsExtended.deleteContact(contact).then(_ => {
+            setCustomers(
+                customers.filter(item => item.id !== contact.id)
+            );
+        })
+    };
+
+    const getEditLink = (userId) => {
+        return {
+            pathname: `${match.path}/${userId}/edit`,
+            state: {
+                returnPathname: location.pathname,
+            }
+        }
     };
 
     return (
@@ -68,7 +74,7 @@ function ContactsExtendedList() {
                                 <th className="text-primary">Email</th>
                                 <th className="text-primary">Phone</th>
                                 <th className="text-primary">Added Date</th>
-                                <th className="text-primary"></th>
+                                <th className="text-primary" style={{width: '120px'}}></th>
                             </tr>
                             </thead>
                             <tbody>
@@ -83,14 +89,14 @@ function ContactsExtendedList() {
                                 customers.map(user => (
                                     <tr key={user.id}>
                                         <td>
-                                            <a href="#">{user.firstName} {user.lastName}</a>
+                                            <Link to={getEditLink(user.id)}>{user.firstName} {user.lastName}</Link>
                                         </td>
                                         <td>{user.email}</td>
                                         <td>{user.phone}</td>
                                         <td>{user.createdDate.format(DateFormatType.M3_D2_CM_Y4)}</td>
-                                        <td style={{width: '120px'}}>
+                                        <td>
                                             <span className="editButtons">
-                                                <a href="#">Edit</a>
+                                                 <Link to={getEditLink(user.id)}>Details</Link>
                                                 <DeleteLinkWithConfirmation actionFn={deleteItem(user)}/>
                                             </span>
                                         </td>
@@ -102,7 +108,7 @@ function ContactsExtendedList() {
                 </div>
             </div>
             {/* Add/Edit Modal*/
-                isNewOpened && <ContactExtendedNew onSave={addContact} onHide={handleHide} />
+                isNewOpened && <ContactExtendedEdit onSave={addContact} onHide={handleHide}/>
             }
         </>
     )

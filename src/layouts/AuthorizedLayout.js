@@ -1,12 +1,13 @@
 import React from 'react';
-import ContactsList from "../entities/contacts/ContactsList";
-import ContactsExtendedList from "../entities/contacts-extended/ContactsExtendedList";
 import Sidebar from "../shared/components/Sidebar";
 import TopNavBar from "../shared/components/TopNavBar";
 import Footer from "../shared/components/Footer";
 import Dashboard from "../entities/dashboard/Dashboard";
 import {Redirect, Route, Switch} from "react-router-dom";
 import '@fortawesome/fontawesome-free/css/all.min.css';
+import ContactsList from "../entities/contacts/ContactsList";
+import ContactsExtendedIndex from "../entities/contacts-extended/ContactsExtendedIndex";
+import {mainRoutes} from "../shared/main-routes";
 
 function AuthorizedLayout() {
     return (
@@ -17,10 +18,10 @@ function AuthorizedLayout() {
                     <TopNavBar/>
                     <div className="container-fluid">
                         <Switch>
-                            <Route path="/contacts" component={ContactsList} />
-                            <Route path="/contacts-extened" component={ContactsExtendedList} />
-                            <Route path="/dashboard" component={Dashboard} />
-                            <Redirect to="/dashboard"/>
+                            <Route path={mainRoutes.contacts} component={ContactsList}/>
+                            <Route path={mainRoutes.contactsExtended} component={ContactsExtendedIndex}/>
+                            <Route path={mainRoutes.dashboard} component={Dashboard}/>
+                            <Redirect to={mainRoutes.dashboard}/>
                         </Switch>
                     </div>
                 </div>
