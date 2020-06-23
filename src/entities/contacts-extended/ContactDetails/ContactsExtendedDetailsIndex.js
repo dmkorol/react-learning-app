@@ -30,8 +30,6 @@ const contactsExtendedEditTabs = [notesTab, emailsTab, callsTab];
 
 function ContactsExtendedDetailsIndex({match, location}) {
     const {contactId} = match.params;
-    console.log('contactId', contactId);
-
     return (
         <div>
             <Link to={mainRoutes.contactsExtended}>Back</Link>

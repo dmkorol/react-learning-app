@@ -2,7 +2,7 @@ import React from 'react';
 
 function ContactsExtendedEmails(props) {
     return (
-        <div>Emails</div>
+        <div>Under development</div>
     );
 }
 

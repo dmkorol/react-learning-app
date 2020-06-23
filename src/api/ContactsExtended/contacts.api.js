@@ -1,6 +1,6 @@
 import {API_URL} from '../api';
 import {handleErrors} from '../api';
-import moment from "moment";
+import {convertDateISOToMoment} from "../../shared/utils/moment.settings";
 
 const CURRENT_URL = '/clients-extended';
 
@@ -8,7 +8,7 @@ export const ContactsExtended = {
     listExpendedContacts: () => {
         return fetch(API_URL + CURRENT_URL)
             .then(res => res.json())
-            .then(arr => arr.map(convertDateISOToMoment));
+            .then(arr => arr.map(convertDateISOToMoment(['createdDate'])));
     },
 
     createContact: (contact) => {
@@ -25,7 +25,7 @@ export const ContactsExtended = {
             .then(handleErrors)
             .then(res => res.json())
             .then(item => new Promise((resolve) => {
-                    resolve(convertDateISOToMoment(item));
+                    resolve(convertDateISOToMoment(['createdDate'])(item));
                 })
             );
     },
@@ -42,7 +42,7 @@ export const ContactsExtended = {
             .then(handleErrors)
             .then(res => res.json())
             .then(item => new Promise((resolve) => {
-                    resolve(convertDateISOToMoment(item));
+                    resolve(convertDateISOToMoment(['createdDate'])(item));
                 })
             );
     },
@@ -50,7 +50,7 @@ export const ContactsExtended = {
     getContact: (contactId) => {
         return fetch(API_URL + CURRENT_URL + '/' + contactId)
             .then(res => res.json())
-            // .then(item => convertDateISOToMoment(item));
+            // .then(item => convertDateISOToMoment(['createdDate'])(item));
     },
 
     deleteContact: (contact) => {
@@ -60,13 +60,4 @@ export const ContactsExtended = {
             })
             .then(res => res.json());
     }
-}
-
-
-function convertDateISOToMoment(item) {
-    if (item && item.createdDate) {
-        item.createdDate = moment(item.createdDate);
-        return item;
-    }
-    return item;
 }

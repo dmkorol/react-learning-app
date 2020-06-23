@@ -38,7 +38,7 @@ export function ContactExtendedNoteEdit({onHide, onSave, selectedItem, clientExt
                 <div className="form-group">
                     <label htmlFor="editContactField1">Text</label>
                     <textarea className="form-control" name="note" id="editContactField1" cols="30" rows="10"
-                              onChange={e => onTextChange}>{text}</textarea>
+                              onChange={onTextChange} value={text}></textarea>
                     {showError(errors, 'text')}
                 </div>
                 {/*<div className="form-group">*/}

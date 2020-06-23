@@ -2,7 +2,7 @@ import React from 'react';
 
 function ContactsExtendedCalls(props) {
     return (
-        <div>Calls</div>
+        <div>Under development</div>
     );
 }
 
