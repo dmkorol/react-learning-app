@@ -1,4 +1,4 @@
-## Demo
+## React Demo Project
 
 [Online demo ](http://ec2-18-217-233-144.us-east-2.compute.amazonaws.com/) is available.
 
